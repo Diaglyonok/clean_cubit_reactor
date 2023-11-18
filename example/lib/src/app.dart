@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: const [
           Locale('en', ''), // English, no country code
         ],
-        onGenerateTitle: (BuildContext context) => 'Sample app',
+        onGenerateTitle: (BuildContext context) => 'Reactor Example',
         theme: ThemeData(),
         darkTheme: ThemeData.dark(),
         onGenerateRoute: (RouteSettings routeSettings) {
