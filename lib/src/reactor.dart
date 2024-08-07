@@ -5,6 +5,8 @@ mixin Reactor<LST, ResponseType extends ReactorResponse<LST>> {
   final List<CubitListener> listeners = [];
   final List<void Function(ResponseType)> dataListeners = [];
 
+  final List<ResponseType> _sessionlHistory = [];
+
   void addDataListener(void Function(ResponseType) listener) {
     dataListeners.add(listener);
   }
@@ -30,6 +32,8 @@ mixin Reactor<LST, ResponseType extends ReactorResponse<LST>> {
   }
 
   void provideDataToListeners(ResponseType data) {
+    _sessionlHistory.add(data);
+
     for (var listener in listeners) {
       if (listener.type == data.type) {
         listener.typedEmit(data);
@@ -39,5 +43,19 @@ mixin Reactor<LST, ResponseType extends ReactorResponse<LST>> {
     for (var listener in dataListeners) {
       listener.call(data);
     }
+  }
+
+  T? getLastData<T extends ResponseType>() {
+    if (T == ResponseType) {
+      return _sessionlHistory.last as T;
+    }
+
+    final result = _sessionlHistory.whereType<T>().toList();
+
+    if (result.isEmpty) {
+      return null;
+    }
+
+    return result.toList().last;
   }
 }
