@@ -46,6 +46,10 @@ mixin Reactor<LST, ResponseType extends ReactorResponse<LST>> {
   }
 
   T? getLastData<T extends ResponseType>() {
+    if (_sessionlHistory.isEmpty) {
+      return null;
+    }
+
     if (T == ResponseType) {
       return _sessionlHistory.last as T;
     }
