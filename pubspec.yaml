@@ -1,6 +1,9 @@
 name: clean_cubit_reactor
-description: A new Flutter plugin project.
-version: 0.0.1
+description: Lightweight coordination layer for Cubit with automatic synchronization between multiple cubits using Reactor.
+version: 1.0.0
+repository: https://github.com/Diaglyonok/clean_cubit_reactor
+issue_tracker: https://github.com/Diaglyonok/clean_cubit_reactor/issues
+homepage: https://github.com/Diaglyonok/clean_cubit_reactor
 
 environment:
   sdk: ">=3.1.0 <4.0.0"

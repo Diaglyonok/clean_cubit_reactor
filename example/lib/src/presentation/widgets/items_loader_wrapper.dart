@@ -1,5 +1,4 @@
 import 'package:clean_cubit_reactor_example/src/domain/entities/sample_item.dart';
-import 'package:clean_cubit_reactor_example/src/data/repository/items_repo_reactor.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/blocs/items_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
