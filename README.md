@@ -46,7 +46,8 @@ This breaks the separation of concerns — the UI should not manage business log
 
 ## How it works
 
-> 💡 **Diagram placeholder** — insert the flowchart diagram here:  
+> ![telegram-cloud-photo-size-2-5253519944413476335-y](https://github.com/user-attachments/assets/292aa484-e434-4e6d-96e6-bf937d3ea404)
+
 
 ---
 
