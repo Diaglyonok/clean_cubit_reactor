@@ -3,7 +3,10 @@ import 'package:clean_cubit_reactor_example/src/domain/entities/error_model.dart
 import 'package:clean_cubit_reactor_example/src/domain/entities/items_response.dart';
 import 'package:clean_cubit_reactor_example/src/domain/entities/listener_type.dart';
 import 'package:clean_cubit_reactor_example/src/domain/entities/sample_item.dart';
-import 'package:clean_cubit_reactor_example/src/domain/reactors/items_repo_reactor.dart';
+import 'package:clean_cubit_reactor_example/src/data/repository/items_repo_reactor.dart';
+import 'package:clean_cubit_reactor_example/src/domain/usecases/add_item_usecase.dart';
+import 'package:clean_cubit_reactor_example/src/domain/usecases/delete_item_usecase.dart';
+import 'package:clean_cubit_reactor_example/src/domain/usecases/update_item_usecase.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -36,22 +39,21 @@ class ItemUpdateCubitErrorState extends ItemUpdateCubitState {
   }
 }
 
-class ItemUpdateCubit extends CubitListener<ListenersType, ItemsUpdateResponse, ItemUpdateCubitState> {
-  ItemUpdateCubit(this._reactor) : super(ItemUpdateCubitInitState(), _reactor, ListenersType.updateListener);
+class ItemUpdateCubit
+    extends CubitListener<ListenersType, ItemsUpdateResponse, ItemUpdateCubitState> {
+  ItemUpdateCubit(ItemsBaseReactor reactor, this._addItemUsecase, this._deleteItemUsecase,
+      this._updateItemUsecase)
+      : super(ItemUpdateCubitInitState(), reactor, ListenersType.updateListener);
 
-  final ItemsRepoReactor _reactor;
+  final AddItemUsecase _addItemUsecase;
+  final DeleteItemUsecase _deleteItemUsecase;
+  final UpdateItemUsecase _updateItemUsecase;
 
-  void addItem(String name) async {
-    _reactor.addItem(SampleItem.create(name: name));
-  }
+  void addItem(String name) => _addItemUsecase(name);
 
-  void deleteFlatItem(SampleItem item) async {
-    _reactor.delete(item);
-  }
+  void deleteFlatItem(SampleItem item) => _deleteItemUsecase(item);
 
-  void updateFlatItem(SampleItem item) async {
-    _reactor.update(item);
-  }
+  void updateFlatItem(SampleItem item) => _updateItemUsecase(item);
 
   @override
   void emitOnResponse(ItemsUpdateResponse response) {

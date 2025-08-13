@@ -1,4 +1,3 @@
-import 'package:clean_cubit_reactor_example/src/domain/scope_builder/scope_builder.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/widgets/sample_item_add_view.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/widgets/sample_item_details_view.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/widgets/sample_item_list_view.dart';
@@ -13,37 +12,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScopeBuilder(
-      child: MaterialApp(
-        restorationScopeId: 'app',
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('en', ''), // English, no country code
-        ],
-        onGenerateTitle: (BuildContext context) => 'Reactor Example',
-        theme: ThemeData(),
-        darkTheme: ThemeData.dark(),
-        onGenerateRoute: (RouteSettings routeSettings) {
-          return MaterialPageRoute<void>(
-            settings: routeSettings,
-            builder: (BuildContext context) {
-              switch (routeSettings.name) {
-                case SampleItemDetailsView.routeName:
-                  return SampleItemDetailsView(itemId: routeSettings.arguments as String);
-                case SampleItemAddView.routeName:
-                  return const SampleItemAddView();
-                case SampleItemListView.routeName:
-                default:
-                  return const SampleItemListView();
-              }
-            },
-          );
-        },
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      restorationScopeId: 'app',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English, no country code
+      ],
+      onGenerateTitle: (BuildContext context) => 'Reactor Example',
+      theme: ThemeData(),
+      darkTheme: ThemeData.dark(),
+      onGenerateRoute: (RouteSettings routeSettings) {
+        return MaterialPageRoute<void>(
+          settings: routeSettings,
+          builder: (BuildContext context) {
+            switch (routeSettings.name) {
+              case SampleItemDetailsView.routeName:
+                return SampleItemDetailsView(itemId: routeSettings.arguments as String);
+              case SampleItemAddView.routeName:
+                return const SampleItemAddView();
+              case SampleItemListView.routeName:
+              default:
+                return const SampleItemListView();
+            }
+          },
+        );
+      },
     );
   }
 }

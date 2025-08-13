@@ -1,8 +1,9 @@
 import 'package:clean_cubit_reactor_example/src/domain/entities/sample_item.dart';
-import 'package:clean_cubit_reactor_example/src/domain/reactors/items_repo_reactor.dart';
+import 'package:clean_cubit_reactor_example/src/data/repository/items_repo_reactor.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/blocs/items_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class ItemsLoadWrapper extends StatelessWidget {
   final void Function(BuildContext, ItemsCubitState)? listener;
@@ -17,7 +18,7 @@ class ItemsLoadWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ItemsCubit>(
-      create: (context) => ItemsCubit(RepositoryProvider.of<ItemsRepoReactor>(context)),
+      create: (context) => GetIt.I<ItemsCubit>(),
       child: BlocConsumer<ItemsCubit, ItemsCubitState>(
         listener: listener ?? (_, __) {},
         builder: (context, itemsState) {

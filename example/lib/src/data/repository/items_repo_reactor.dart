@@ -5,7 +5,9 @@ import 'package:clean_cubit_reactor_example/src/domain/entities/items_response.d
 import 'package:clean_cubit_reactor_example/src/domain/entities/listener_type.dart';
 import 'package:clean_cubit_reactor_example/src/domain/entities/sample_item.dart';
 
-abstract class ItemsRepoReactor with Reactor<ListenersType, ItemsBaseResponse> {
+typedef ItemsBaseReactor = Reactor<ListenersType, ItemsBaseResponse>;
+
+abstract class ItemsRepoReactor with ItemsBaseReactor {
   bool isReady();
   List<SampleItem>? get data;
 

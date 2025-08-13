@@ -1,7 +1,7 @@
-import 'package:clean_cubit_reactor_example/src/domain/reactors/items_repo_reactor.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/blocs/update_item_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class SampleItemAddView extends StatefulWidget {
   static const routeName = '/sample_item_add';
@@ -19,7 +19,13 @@ class _SampleItemAddViewState extends State<SampleItemAddView> {
   @override
   void initState() {
     super.initState();
-    cubit = ItemUpdateCubit(RepositoryProvider.of<ItemsRepoReactor>(context));
+    cubit = GetIt.I<ItemUpdateCubit>();
+  }
+
+  @override
+  void dispose() {
+    cubit.close();
+    super.dispose();
   }
 
   @override

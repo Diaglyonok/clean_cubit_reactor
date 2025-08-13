@@ -3,7 +3,8 @@ import 'package:clean_cubit_reactor_example/src/domain/entities/error_model.dart
 import 'package:clean_cubit_reactor_example/src/domain/entities/items_response.dart';
 import 'package:clean_cubit_reactor_example/src/domain/entities/listener_type.dart';
 import 'package:clean_cubit_reactor_example/src/domain/entities/sample_item.dart';
-import 'package:clean_cubit_reactor_example/src/domain/reactors/items_repo_reactor.dart';
+import 'package:clean_cubit_reactor_example/src/data/repository/items_repo_reactor.dart';
+import 'package:clean_cubit_reactor_example/src/domain/usecases/fetch_item_usecase.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -33,14 +34,10 @@ class ItemsCubitErrorState extends ItemsCubitState {
 
 //CUBIT
 class ItemsCubit extends CubitListener<ListenersType, ItemsLoadResponse, ItemsCubitState> {
-  ItemsCubit(this._reactor) : super(ItemsCubitShimmerState(_reactor.data), _reactor, ListenersType.loadListener) {
-    load();
-  }
-
-  final ItemsRepoReactor _reactor;
-
-  void load() {
-    _reactor.loadItems();
+  ItemsCubit(ItemsBaseReactor reactor, FetchItemsUsecase fetchItemsUsecase)
+      : super(ItemsCubitShimmerState(reactor.getLastData<ItemsLoadResponse>()?.data), reactor,
+            ListenersType.loadListener) {
+    fetchItemsUsecase();
   }
 
   @override

@@ -1,11 +1,12 @@
 import 'package:clean_cubit_reactor_example/src/domain/entities/sample_item.dart';
-import 'package:clean_cubit_reactor_example/src/domain/reactors/items_repo_reactor.dart';
+import 'package:clean_cubit_reactor_example/src/data/repository/items_repo_reactor.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/blocs/items_bloc.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/blocs/update_item_bloc.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/widgets/items_loader_wrapper.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/widgets/sample_item_add_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 import 'sample_item_details_view.dart';
 
@@ -24,7 +25,7 @@ class _SampleItemListViewState extends State<SampleItemListView> {
   @override
   void initState() {
     super.initState();
-    cubit = ItemsCubit(RepositoryProvider.of<ItemsRepoReactor>(context));
+    cubit = GetIt.I<ItemsCubit>();
   }
 
   @override
@@ -81,7 +82,13 @@ class _ItemViewState extends State<ItemView> {
   @override
   void initState() {
     super.initState();
-    cubit = ItemUpdateCubit(RepositoryProvider.of<ItemsRepoReactor>(context));
+    cubit = GetIt.I<ItemUpdateCubit>();
+  }
+
+  @override
+  void dispose() {
+    cubit.close();
+    super.dispose();
   }
 
   @override
@@ -92,11 +99,7 @@ class _ItemViewState extends State<ItemView> {
         final isLoading = state is ItemUpdateCubitShimmerState && state.updateId == widget.item.id;
         return ListTile(
           title: Text(widget.item.name),
-          leading: isLoading
-              ? const CircularProgressIndicator()
-              : const CircleAvatar(
-                  foregroundImage: AssetImage('assets/images/flutter_logo.png'),
-                ),
+          leading: isLoading ? const CircularProgressIndicator() : const CircleAvatar(),
           onTap: isLoading
               ? null
               : () {

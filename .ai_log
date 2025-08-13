@@ -1,0 +1,8 @@
+# AI Development Log
+
+## 2024-12-19
+- Translated all Russian comments to English in `example/test/reactor_history_and_data_listeners_test.dart`
+  - Changed "Те же тест-дублёры, что и в предыдущем файле (для независимости)" to "Same test doubles as in the previous file (for independence)"
+  - Changed "последнее — update" to "last one is update"
+  - Changed "удаляем" to "remove"
+  - Changed "после удаления слушатель не получает события" to "after removal listener doesn't receive events" 

@@ -1,10 +1,11 @@
 import 'package:clean_cubit_reactor_example/src/domain/entities/sample_item.dart';
-import 'package:clean_cubit_reactor_example/src/domain/reactors/items_repo_reactor.dart';
+import 'package:clean_cubit_reactor_example/src/data/repository/items_repo_reactor.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/blocs/items_bloc.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/blocs/update_item_bloc.dart';
 import 'package:clean_cubit_reactor_example/src/presentation/widgets/items_loader_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 /// Displays detailed information about a SampleItem.
 class SampleItemDetailsView extends StatefulWidget {
@@ -62,7 +63,7 @@ class _SampleItemDetailsViewState extends State<SampleItemDetailsView> {
               ),
               const SizedBox(height: 20),
               BlocProvider<ItemUpdateCubit>(
-                create: (context) => ItemUpdateCubit(RepositoryProvider.of<ItemsRepoReactor>(context)),
+                create: (context) => GetIt.I<ItemUpdateCubit>(),
                 child: BlocConsumer<ItemUpdateCubit, ItemUpdateCubitState>(
                   listener: (context, state) {
                     if (state is ItemUpdateCubitErrorState) {
@@ -93,7 +94,8 @@ class _SampleItemDetailsViewState extends State<SampleItemDetailsView> {
                       onPressed: () {
                         final text = controller.text;
                         if (text.isNotEmpty && item != null && item.name != text) {
-                          BlocProvider.of<ItemUpdateCubit>(context).updateFlatItem(item.withName(text));
+                          BlocProvider.of<ItemUpdateCubit>(context)
+                              .updateFlatItem(item.withName(text));
                         } else {
                           Navigator.of(context).pop();
                         }
