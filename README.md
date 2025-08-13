@@ -46,8 +46,7 @@ This breaks the separation of concerns — the UI should not manage business log
 
 ## How it works
 
-> ![telegram-cloud-photo-size-2-5253519944413476335-y](https://github.com/user-attachments/assets/292aa484-e434-4e6d-96e6-bf937d3ea404)
-
+> <img width="3840" height="3124" alt="Untitled diagram _ Mermaid Chart-2025-08-13-163719" src="https://github.com/user-attachments/assets/f5d166ae-0e90-4f1c-9645-0d645b000aea" />
 
 ---
 
