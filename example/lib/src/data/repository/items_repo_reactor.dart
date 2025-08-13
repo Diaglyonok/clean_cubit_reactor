@@ -22,7 +22,8 @@ class ItemsRepoReactorImpl extends ItemsRepoReactor {
 
   List<SampleItem>? _data;
 
-  ItemsRepoReactorImpl({required ItemsRepository repository}) : _repository = repository;
+  ItemsRepoReactorImpl({required ItemsRepository repository})
+      : _repository = repository;
 
   @override
   bool isReady() => _data != null && _data!.isNotEmpty;

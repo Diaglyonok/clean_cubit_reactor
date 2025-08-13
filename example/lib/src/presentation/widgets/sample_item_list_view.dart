@@ -95,10 +95,13 @@ class _ItemViewState extends State<ItemView> {
     return BlocBuilder<ItemUpdateCubit, ItemUpdateCubitState>(
       bloc: cubit,
       builder: (context, state) {
-        final isLoading = state is ItemUpdateCubitShimmerState && state.updateId == widget.item.id;
+        final isLoading = state is ItemUpdateCubitShimmerState &&
+            state.updateId == widget.item.id;
         return ListTile(
           title: Text(widget.item.name),
-          leading: isLoading ? const CircularProgressIndicator() : const CircleAvatar(),
+          leading: isLoading
+              ? const CircularProgressIndicator()
+              : const CircleAvatar(),
           onTap: isLoading
               ? null
               : () {

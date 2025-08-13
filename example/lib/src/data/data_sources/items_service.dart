@@ -18,7 +18,11 @@ class LocalItemsService extends ItemsService {
     final prefs = await SharedPreferences.getInstance();
     final itemsStr = prefs.getStringList(storageKey) ?? <String>[];
 
-    return itemsStr.map((e) => ItemModel.fromString(e)).where((element) => element != null).toList().cast<ItemModel>();
+    return itemsStr
+        .map((e) => ItemModel.fromString(e))
+        .where((element) => element != null)
+        .toList()
+        .cast<ItemModel>();
   }
 
   @override
@@ -43,8 +47,9 @@ class LocalItemsService extends ItemsService {
   @override
   updateItem(String id, String name) async {
     final prefs = await SharedPreferences.getInstance();
-    final items =
-        (prefs.getStringList(storageKey) ?? <String>[]).map((element) => ItemModel.fromString(element)).toList();
+    final items = (prefs.getStringList(storageKey) ?? <String>[])
+        .map((element) => ItemModel.fromString(element))
+        .toList();
 
     final index = items.indexWhere((element) => element?.id == id);
     if (index < 0 || items[index] == null) {
@@ -53,6 +58,7 @@ class LocalItemsService extends ItemsService {
 
     items[index] = ItemModel(items[index]!.id, name);
 
-    await prefs.setStringList(storageKey, items.map((e) => e.toString()).toList());
+    await prefs.setStringList(
+        storageKey, items.map((e) => e.toString()).toList());
   }
 }

@@ -1,6 +1,6 @@
 name: clean_cubit_reactor
 description: Lightweight coordination layer for Cubit with automatic synchronization between multiple cubits using Reactor.
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/Diaglyonok/clean_cubit_reactor
 issue_tracker: https://github.com/Diaglyonok/clean_cubit_reactor/issues
 homepage: https://github.com/Diaglyonok/clean_cubit_reactor
@@ -12,9 +12,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^6.0.0

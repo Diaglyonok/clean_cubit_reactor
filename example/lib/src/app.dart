@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
           builder: (BuildContext context) {
             switch (routeSettings.name) {
               case SampleItemDetailsView.routeName:
-                return SampleItemDetailsView(itemId: routeSettings.arguments as String);
+                return SampleItemDetailsView(
+                    itemId: routeSettings.arguments as String);
               case SampleItemAddView.routeName:
                 return const SampleItemAddView();
               case SampleItemListView.routeName:

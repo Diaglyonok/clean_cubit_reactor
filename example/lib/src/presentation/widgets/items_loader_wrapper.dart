@@ -30,7 +30,8 @@ class ItemsLoadWrapper extends StatelessWidget {
             );
           }
 
-          if (itemsState is ItemsCubitShimmerState && (itemsState.items ?? []).isEmpty) {
+          if (itemsState is ItemsCubitShimmerState &&
+              (itemsState.items ?? []).isEmpty) {
             //loading view
             return const Center(
               child: CircularProgressIndicator(),

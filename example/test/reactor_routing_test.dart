@@ -67,8 +67,10 @@ class LoadCubitError extends LoadCubitState {
 }
 
 // Listens only to TestLoadResponse
-class LoadCubit extends CubitListener<TestListenersType, TestLoadResponse, LoadCubitState> {
-  LoadCubit(TestReactor reactor) : super(const LoadCubitInit(), reactor, TestListenersType.load);
+class LoadCubit
+    extends CubitListener<TestListenersType, TestLoadResponse, LoadCubitState> {
+  LoadCubit(TestReactor reactor)
+      : super(const LoadCubitInit(), reactor, TestListenersType.load);
 
   @override
   void emitOnResponse(TestLoadResponse response) {
@@ -110,7 +112,8 @@ class UpdateCubitError extends UpdateCubitState {
 }
 
 // Listens only to TestUpdateResponse
-class UpdateCubit extends CubitListener<TestListenersType, TestUpdateResponse, UpdateCubitState> {
+class UpdateCubit extends CubitListener<TestListenersType, TestUpdateResponse,
+    UpdateCubitState> {
   UpdateCubit(TestReactor reactor)
       : super(const UpdateCubitInit(), reactor, TestListenersType.update);
 
@@ -172,7 +175,8 @@ void main() {
       reactor.emitUpdate(id: 42);
 
       await Future<void>.delayed(const Duration(milliseconds: 10));
-      expect(emittedUpdate.any((e) => e is UpdateCubitSuccess && e.id == 42), isTrue);
+      expect(emittedUpdate.any((e) => e is UpdateCubitSuccess && e.id == 42),
+          isTrue);
       expect(emittedLoad.any((e) => e is LoadCubitHasData), isFalse);
     });
 
@@ -189,7 +193,9 @@ void main() {
       expect(emittedUpdate.whereType<UpdateCubitShimmer>(), isEmpty);
     });
 
-    test('close() unsubscribes listener from reactor (doesn\'t receive events anymore)', () async {
+    test(
+        'close() unsubscribes listener from reactor (doesn\'t receive events anymore)',
+        () async {
       // before closing both are subscribed
       reactor.emitLoad([1]);
       await Future<void>.delayed(const Duration(milliseconds: 10));

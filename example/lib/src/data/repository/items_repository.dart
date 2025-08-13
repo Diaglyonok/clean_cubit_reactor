@@ -12,7 +12,8 @@ abstract class ItemsRepository {
 class ItemsRepositoryImpl extends ItemsRepository {
   final ItemsService _itemsService;
 
-  ItemsRepositoryImpl({required ItemsService itemsService}) : _itemsService = itemsService;
+  ItemsRepositoryImpl({required ItemsService itemsService})
+      : _itemsService = itemsService;
 
   List<SampleItem>? _converter(List<ItemModel>? data) {
     return data?.map((e) => SampleItem.from(itemModel: e)).toList();

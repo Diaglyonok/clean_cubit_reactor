@@ -24,7 +24,8 @@ class ItemsCubitHasDataState extends ItemsCubitState {
 
 class ItemsCubitErrorState extends ItemsCubitState {
   final LoadError? error;
-  const ItemsCubitErrorState(List<SampleItem>? items, {required this.error}) : super(items);
+  const ItemsCubitErrorState(List<SampleItem>? items, {required this.error})
+      : super(items);
 
   String getErrorString(BuildContext context) {
     //get localization from context here
@@ -33,9 +34,13 @@ class ItemsCubitErrorState extends ItemsCubitState {
 }
 
 //CUBIT
-class ItemsCubit extends CubitListener<ListenersType, ItemsLoadResponse, ItemsCubitState> {
+class ItemsCubit
+    extends CubitListener<ListenersType, ItemsLoadResponse, ItemsCubitState> {
   ItemsCubit(ItemsBaseReactor reactor, FetchItemsUsecase fetchItemsUsecase)
-      : super(ItemsCubitShimmerState(reactor.getLastData<ItemsLoadResponse>()?.data), reactor,
+      : super(
+            ItemsCubitShimmerState(
+                reactor.getLastData<ItemsLoadResponse>()?.data),
+            reactor,
             ListenersType.loadListener) {
     fetchItemsUsecase();
   }

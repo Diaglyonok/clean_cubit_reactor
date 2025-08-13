@@ -14,11 +14,11 @@ void registerDependencies() {
 
   GetIt.instance.registerFactory<ItemsRepository>(
       () => ItemsRepositoryImpl(itemsService: GetIt.instance<ItemsService>()));
-  GetIt.instance.registerLazySingleton<ItemsRepoReactor>(
-      () => ItemsRepoReactorImpl(repository: GetIt.instance<ItemsRepository>()));
+  GetIt.instance.registerLazySingleton<ItemsRepoReactor>(() =>
+      ItemsRepoReactorImpl(repository: GetIt.instance<ItemsRepository>()));
 
-  GetIt.instance
-      .registerFactory<AddItemUsecase>(() => AddItemUsecase(GetIt.instance<ItemsRepoReactor>()));
+  GetIt.instance.registerFactory<AddItemUsecase>(
+      () => AddItemUsecase(GetIt.instance<ItemsRepoReactor>()));
   GetIt.instance.registerFactory<DeleteItemUsecase>(
       () => DeleteItemUsecase(GetIt.instance<ItemsRepoReactor>()));
   GetIt.instance.registerFactory<UpdateItemUsecase>(
@@ -32,6 +32,6 @@ void registerDependencies() {
       GetIt.instance<DeleteItemUsecase>(),
       GetIt.instance<UpdateItemUsecase>()));
 
-  GetIt.instance.registerFactory<ItemsCubit>(
-      () => ItemsCubit(GetIt.instance<ItemsRepoReactor>(), GetIt.instance<FetchItemsUsecase>()));
+  GetIt.instance.registerFactory<ItemsCubit>(() => ItemsCubit(
+      GetIt.instance<ItemsRepoReactor>(), GetIt.instance<FetchItemsUsecase>()));
 }

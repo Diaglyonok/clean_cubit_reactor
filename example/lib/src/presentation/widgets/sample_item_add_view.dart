@@ -77,7 +77,9 @@ class _SampleItemAddViewState extends State<SampleItemAddView> {
 
                   cubit.addItem(text);
                 },
-                child: isLoading ? const CircularProgressIndicator() : const Text('Add'),
+                child: isLoading
+                    ? const CircularProgressIndicator()
+                    : const Text('Add'),
               );
             },
           ),

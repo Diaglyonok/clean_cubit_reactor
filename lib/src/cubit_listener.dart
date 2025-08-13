@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import './reactor.dart';
 
-abstract class CubitListener<T, D extends ReactorResponse<T>, S> extends Cubit<S> {
+abstract class CubitListener<T, D extends ReactorResponse<T>, S>
+    extends Cubit<S> {
   final Reactor _reactor;
   final T type;
 

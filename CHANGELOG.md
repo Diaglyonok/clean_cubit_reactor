@@ -10,3 +10,10 @@
   
 ## 1.0.1
 - Upadated readme image
+
+## 1.0.2
+- Upadated readme image
+
+## 1.0.3
+- Updated flutter_bloc
+- Runned dart format

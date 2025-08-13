@@ -39,11 +39,12 @@ class ItemUpdateCubitErrorState extends ItemUpdateCubitState {
   }
 }
 
-class ItemUpdateCubit
-    extends CubitListener<ListenersType, ItemsUpdateResponse, ItemUpdateCubitState> {
-  ItemUpdateCubit(ItemsBaseReactor reactor, this._addItemUsecase, this._deleteItemUsecase,
-      this._updateItemUsecase)
-      : super(ItemUpdateCubitInitState(), reactor, ListenersType.updateListener);
+class ItemUpdateCubit extends CubitListener<ListenersType, ItemsUpdateResponse,
+    ItemUpdateCubitState> {
+  ItemUpdateCubit(ItemsBaseReactor reactor, this._addItemUsecase,
+      this._deleteItemUsecase, this._updateItemUsecase)
+      : super(
+            ItemUpdateCubitInitState(), reactor, ListenersType.updateListener);
 
   final AddItemUsecase _addItemUsecase;
   final DeleteItemUsecase _deleteItemUsecase;

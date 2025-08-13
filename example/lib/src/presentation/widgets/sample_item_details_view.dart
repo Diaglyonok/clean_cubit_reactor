@@ -92,14 +92,18 @@ class _SampleItemDetailsViewState extends State<SampleItemDetailsView> {
                     return FilledButton(
                       onPressed: () {
                         final text = controller.text;
-                        if (text.isNotEmpty && item != null && item.name != text) {
+                        if (text.isNotEmpty &&
+                            item != null &&
+                            item.name != text) {
                           BlocProvider.of<ItemUpdateCubit>(context)
                               .updateFlatItem(item.withName(text));
                         } else {
                           Navigator.of(context).pop();
                         }
                       },
-                      child: isLoading ? const CircularProgressIndicator() : const Text('Save'),
+                      child: isLoading
+                          ? const CircularProgressIndicator()
+                          : const Text('Save'),
                     );
                   },
                 ),
