@@ -7,3 +7,6 @@
   - `CubitListener` for subscribing cubits to specific response types
   - Local caching and session history support
   - Example project demonstrating usage with `ItemsCubit` and `UpdateItemCubit`
+  
+## 1.0.1
+- Upadated readme image
