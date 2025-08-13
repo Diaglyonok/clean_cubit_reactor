@@ -1,6 +1,6 @@
 name: clean_cubit_reactor
 description: Lightweight coordination layer for Cubit with automatic synchronization between multiple cubits using Reactor.
-version: 1.0.1
+version: 1.0.2
 repository: https://github.com/Diaglyonok/clean_cubit_reactor
 issue_tracker: https://github.com/Diaglyonok/clean_cubit_reactor/issues
 homepage: https://github.com/Diaglyonok/clean_cubit_reactor
