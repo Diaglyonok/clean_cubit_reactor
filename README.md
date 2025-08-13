@@ -46,7 +46,7 @@ This breaks the separation of concerns — the UI should not manage business log
 
 ## How it works
 
-> <img width="3840" height="3124" alt="Untitled diagram _ Mermaid Chart-2025-08-13-163719" src="https://github.com/user-attachments/assets/f5d166ae-0e90-4f1c-9645-0d645b000aea" />
+> <img width="960" height="781" alt="diagram" src="https://github.com/user-attachments/assets/b3234891-b2be-4056-8591-45762cd2c79a" />
 
 ---
 
